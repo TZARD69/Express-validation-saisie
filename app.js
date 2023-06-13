@@ -6,9 +6,9 @@ const port = process.env.APP_PORT;
 app.use(express.json());
 
 const { validateMovie, validateUser } = require("./validators.js");
-
 const movieHandlers = require("./moviesHandlers");
 
+app.delete("/api/movies/:id", movieHandlers.deleteMovie);
 app.post("/api/movies", validateMovie, movieHandlers.postMovie);
 app.put("/api/movies/:id", validateMovie, movieHandlers.updateMovie);
 app.get("/api/movies", movieHandlers.getMovies);
