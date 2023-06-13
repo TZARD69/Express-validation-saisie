@@ -1,0 +1,23 @@
+{
+  "name": "02-express-read-bdd",
+  "version": "1.0.0",
+  "description": "Express 02 - 🚀 Lecture depuis la base de données Dans cette quête, il est temps d'apprendre à connecter ton serveur Express à ta base de données SQL.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "joi": "^17.9.2",
+    "mysql2": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
