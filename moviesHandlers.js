@@ -1,8 +1,24 @@
 const database = require("./database");
 
 const getMovies = (req, res) => {
+  let rqsql = "select * from movies";
+  const sqlValues = [];
+
+  if (req.query.color != null) {
+    sql += " where color = ?";
+    sqlValues.push(req.query.color);
+  }
+  if (req.query.max_duration != null) {
+    rqsql += " where duration <= ?";
+    sqlValues.push(req.query.max_duration);
+  }
+  if ((req.query.color != null) & (req.query.max_duration != null)) {
+    rqsql += " where max_duration <= ? and color = ?";
+    rssqlValues.push(req.query.max_duration);
+  }
+
   database
-    .query("select * from movies")
+    .query(sql, sqlValue)
     .then(([movies]) => {
       res.json(movies);
     })
@@ -81,11 +97,18 @@ const deleteMovie = (req, res) => {
       } else {
         res.sendStatus(204);
       }
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.error(err);
 
       res.status(500).send("Error deleting the movie");
     });
 };
 
-module.exports = { getMovies, getMovieById, postMovie, updateMovie, deleteMovie };
+module.exports = {
+  getMovies,
+  getMovieById,
+  postMovie,
+  updateMovie,
+  deleteMovie,
+};
